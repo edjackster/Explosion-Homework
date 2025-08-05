@@ -20,20 +20,14 @@ public class CubeClickEventHandler : MonoBehaviour
 
     private void OnClick(Cube cube)
     {
-        float spawnChance = cube.GetSpawnChance();
+        bool willSpawn = Random.Range(MinChance, MaxChance) <= cube.SpawnChance;
 
-        if (WillSpawn(spawnChance) == true)
+        if (willSpawn == true)
         {
-            cube.MultiplieChance();
             var cubes = _spawner.Spawn(cube);
             _explosive.Explode(cubes, cube.transform.position);
         }
 
         Destroy(cube.gameObject);
-    }
-
-    private bool WillSpawn(float spawnChance)
-    {
-        return Random.Range(MinChance, MaxChance) <= spawnChance;
     }
 }

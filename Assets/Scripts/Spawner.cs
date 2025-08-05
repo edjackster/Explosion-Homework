@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private float SizeMultiplier = .5f;
-    [SerializeField] private int minSpawns = 2;
-    [SerializeField] private int maxSpawns = 6;
+    [SerializeField] private float _spawnChanceMultiplier = .5f;
+    [SerializeField] private float _sizeMultiplier = .5f;
+    [SerializeField] private int _minSpawns = 2;
+    [SerializeField] private int _maxSpawns = 6;
+    [SerializeField] private Cube _prefab;
 
     public List<Cube> Spawn(Cube cube)
     {
-        int cubesCount = Random.Range(minSpawns, maxSpawns);
+        int cubesCount = Random.Range(_minSpawns, _maxSpawns);
         List<Cube> result = new List<Cube>();
 
         for (int i = 0; i < cubesCount; i++)
@@ -26,10 +28,11 @@ public class Spawner : MonoBehaviour
             var shift = direction * cube.transform.localScale.magnitude / shiftDevider;
             var spawnPosition = cube.transform.position + shift;
 
-            var newCube = Instantiate(cube, spawnPosition, Quaternion.identity);
+            var newCube = Instantiate(_prefab, spawnPosition, Quaternion.identity);
             result.Add(newCube);
 
-            newCube.transform.localScale = cube.transform.localScale * SizeMultiplier;
+            newCube.transform.localScale = cube.transform.localScale * _sizeMultiplier;
+            newCube.SpawnChance = cube.SpawnChance * _spawnChanceMultiplier;
         }
 
         return result;
