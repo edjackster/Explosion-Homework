@@ -204,9 +204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e09a827ea59594fb1dd0699888cc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SizeMultiplier: 0.5
-  minSpawns: 2
-  maxSpawns: 6
+  _spawnChanceMultiplier: 0.5
+  _sizeMultiplier: 0.5
+  _minSpawns: 2
+  _maxSpawns: 6
+  _prefab: {fileID: 3560065161436544754, guid: 3fcac67c6dcdf124293a8c13b6d4f692, type: 3}
 --- !u!4 &417601358
 Transform:
   m_ObjectHideFlags: 0
