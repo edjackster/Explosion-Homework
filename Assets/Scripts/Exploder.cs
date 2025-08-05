@@ -16,21 +16,4 @@ public class Exploder : MonoBehaviour
             }
         });
     }
-
-    //Нужно для следующего задания
-    private void Explode()
-    {
-        var position = transform.position;
-        var hits = Physics.SphereCastAll(position, _explosionRange, Vector3.one, maxDistance: _explosionRange);
-
-        foreach (var hit in hits)
-        {
-            if (hit.transform.gameObject == gameObject)
-                continue;
-
-            var _explosionPowerDirection = (hit.transform.position - position);
-
-            hit.rigidbody.velocity = _explosionPowerDirection.normalized / (_explosionPowerDirection.magnitude / _explosionRange) * _explosionPower;
-        }
-    }
 }

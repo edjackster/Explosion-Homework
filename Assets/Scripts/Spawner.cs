@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private const float SizeMultiplier = .5f;
+    [SerializeField] private float SizeMultiplier = .5f;
     [SerializeField] private int minSpawns = 2;
     [SerializeField] private int maxSpawns = 6;
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CubeClickListener : MonoBehaviour
+public class CubeClickEvent : MonoBehaviour
 {
     private const float maxDistance = 100;
 
@@ -11,10 +11,10 @@ public class CubeClickListener : MonoBehaviour
 
     private void Update()
     {
-        OnLeftMouseClick();
+        LeftMouseClick();
     }
 
-    private void OnLeftMouseClick()
+    private void LeftMouseClick()
     {
         if (Input.GetMouseButtonDown(0) == false) 
             return;

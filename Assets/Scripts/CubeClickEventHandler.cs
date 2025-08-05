@@ -1,20 +1,24 @@
 using UnityEngine;
 
-public class ClickEventHandler : MonoBehaviour
+public class CubeClickEventHandler : MonoBehaviour
 {
     private const float MinChance = 0;
     private const float MaxChance = 1;
 
-    [SerializeField] private CubeClickListener listener;
+    [SerializeField] private CubeClickEvent listener;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Exploder _explosive;
 
-    private void Start()
+    private void OnEnable()
     {
-        listener.Click += Click;
+        listener.Click += OnClick;
+    }
+    private void OnDisable()
+    {
+        listener.Click -= OnClick;
     }
 
-    private void Click(Cube cube)
+    private void OnClick(Cube cube)
     {
         float spawnChance = cube.GetSpawnChance();
 
