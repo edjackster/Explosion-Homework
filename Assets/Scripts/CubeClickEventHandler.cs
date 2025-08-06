@@ -27,6 +27,10 @@ public class CubeClickEventHandler : MonoBehaviour
             var cubes = _spawner.Spawn(cube);
             _explosive.Explode(cubes, cube.transform.position);
         }
+        else
+        {
+            _explosive.Explode(cube);
+        }
 
         Destroy(cube.gameObject);
     }

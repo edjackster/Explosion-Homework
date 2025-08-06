@@ -18,9 +18,11 @@ public class Spawner : MonoBehaviour
         {
             float minDelta = -1f;
             float maxDelta = 1f;
+            float minHeight = .1f;
+            float maxHeight = .3f;
             float shiftDevider = 2;
 
-            float deltaY = 0.1f;
+            float deltaY = Random.Range(minHeight, maxHeight);
             float deltaX = Random.Range(minDelta, maxDelta);
             float deltaZ = Random.Range(minDelta, maxDelta);
 

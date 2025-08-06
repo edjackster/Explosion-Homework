@@ -16,4 +16,28 @@ public class Exploder : MonoBehaviour
             }
         });
     }
+
+    public void Explode(Cube cube)
+    {
+        var position = cube.transform.position;
+        var hits = Physics.SphereCastAll(position, _explosionRange, Vector3.one, _explosionRange);
+        float scaledRange = _explosionRange / cube.transform.localScale.magnitude;
+        float scaledPower = _explosionPower / cube.transform.localScale.magnitude;
+
+        foreach (var hit in hits)
+        {
+            if (hit.rigidbody == null)
+                continue;
+
+            if (hit.transform.gameObject == cube.gameObject)
+                continue;
+
+            var positionDifference = (hit.transform.position - position);
+            var direction = positionDifference.normalized;
+            var rangedPower = scaledPower / (positionDifference.magnitude / scaledRange);
+    
+            if(hit.rigidbody)
+                hit.rigidbody.velocity = direction * rangedPower;
+        }
+    }
 }
